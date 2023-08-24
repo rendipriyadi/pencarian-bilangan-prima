@@ -19,11 +19,12 @@ class BilanganPrimaController extends Controller
         return view('bilangan_prima.index', compact('primeNumbers'));
     }
 
-    private function findPrimeNumbers($maxNumber)
+    private function findPrimeNumbers($count)
     {
         $primeNumbers = [];
+        $num = 2;
 
-        for ($num = 2; $num <= $maxNumber; $num++) {
+        while (count($primeNumbers) < $count) {
             $isPrime = true;
 
             for ($i = 2; $i <= sqrt($num); $i++) {
@@ -36,6 +37,8 @@ class BilanganPrimaController extends Controller
             if ($isPrime) {
                 $primeNumbers[] = $num;
             }
+
+            $num++;
         }
 
         return $primeNumbers;
